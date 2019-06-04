@@ -1,6 +1,6 @@
 /*!
- * ng-i18next - Version 1.0.4 - 2017-05-26
- * Copyright (c) 2017 Andre Meyering
+ * ng-i18next - Version 1.0.5 - 2019-06-05
+ * Copyright (c) 2019 i18next authors
  *
  * AngularJS provider, filter and directive for i18next (i18next by Jan Mühlemann)
  *
@@ -169,10 +169,10 @@ var I18nDirectiveController = (function () {
     I18nDirectiveController.prototype.render = function (parsedKey, noWatch) {
         if (angular.isDefined(this) && angular.isDefined(this.$scope)) {
             var i18nOptions_1 = parsedKey.i18nOptions(this.$scope);
-            if (i18nOptions_1.sprintf) {
+            if (angular.isDefined(i18nOptions_1) && i18nOptions_1.sprintf) {
                 i18nOptions_1.postProcess = 'sprintf';
             }
-            if (parsedKey.options.attr === 'html') {
+            if (angular.isDefined(i18nOptions_1) && parsedKey.options.attr === 'html') {
                 angular.forEach(i18nOptions_1, function (value, key) {
                     var newValue = undefined;
                     var sanitized = this.$sanitize(value);
